@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "is_handles=false": { "model": "endertotem:ender_totem" },
-    "is_handles=true": { "model": "endertotem:ender_totem" },
-    "inventory": { "model": "endertotem:ender_totem" }
-  }
-}

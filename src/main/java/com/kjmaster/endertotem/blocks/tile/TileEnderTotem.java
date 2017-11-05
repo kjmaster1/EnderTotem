@@ -86,7 +86,7 @@ public class TileEnderTotem extends TileEntity implements ITickable {
                     float distanceSqrd = (float) ((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2) + (z1 - z2) * (z1 - z2));
                     EntityDragon dragon = (EntityDragon) entity;
                     if(dragon.getHealth() <= 1) {
-                        EnderTotem.LOGGER.info("It died Jimmy");
+
                     } else if (distanceSqrd > 1)
                         setEntityMotionFromVector(entity, new Vector3(x1, y1, z1), 1 * 0.25F);
                 }
