@@ -2,6 +2,8 @@ package com.kjmaster.endertotem.blocks.tile;
 
 import codechicken.lib.vec.Vector3;
 import com.kjmaster.endertotem.EnderTotem;
+import com.kjmaster.endertotem.utils.ConfigHandler;
+import com.kjmaster.endertotem.utils.DraconicEvolution;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.boss.EntityDragon;
@@ -19,7 +21,10 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.end.DragonFightManager;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.fml.common.Loader;
+import net.minecraftforge.fml.common.ModClassLoader;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
@@ -89,12 +94,14 @@ public class TileEnderTotem extends TileEntity implements ITickable {
 
                     } else if (distanceSqrd > 1)
                         setEntityMotionFromVector(entity, new Vector3(x1, y1, z1), 1 * 0.25F);
+                } else if (Loader.isModLoaded("draconicevolution") && ConfigHandler.chaosGuardianEnabled) {
+                    DraconicEvolution.doChaosDragon(entity, x1, y1, z1);
                 }
             }
         }
     }
     //Credit for the following #setEntityMotionFromVector goes to Vazkii and nekosune
-    private void setEntityMotionFromVector(Entity entity, Vector3 originalVec, float modifier) {
+    public static void setEntityMotionFromVector(Entity entity, Vector3 originalVec, float modifier) {
         Vector3 entityVector = Vector3.fromEntityCenter(entity);
         Vector3 finalVector = originalVec.copy().subtract(entityVector);
 

@@ -1,5 +1,6 @@
 package com.kjmaster.endertotem;
 
+import com.kjmaster.endertotem.utils.ConfigHandler;
 import net.minecraft.init.Blocks;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -9,20 +10,27 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.File;
+
 import static com.kjmaster.endertotem.proxy.CommonProxy.proxy;
 
-@Mod(modid = EnderTotem.MODID, version = EnderTotem.VERSION)
+@Mod(modid = EnderTotem.MODID, version = EnderTotem.VERSION, dependencies = EnderTotem.DEPENDENCIES)
 public class EnderTotem
 {
     public static final String MODID = "endertotem";
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.0.2";
     public static final String CLIENT_PROXY = "com.kjmaster.endertotem.proxy.ClientProxy";
     public static final String COMMON_PROXY = "com.kjmaster.endertotem.proxy.CommonProxy";
+    public static final String DEPENDENCIES = "required-after:draconicevolution;required-after:codechickenlib";
+
+    private static File configDir;
+    public static File getConfigDir() { return configDir; }
 
     @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
-
+    public void preInit(FMLPreInitializationEvent event) {
+        configDir = new File(event.getModConfigurationDirectory() + "/" + MODID);
+        configDir.mkdirs();
+        ConfigHandler.init(new File(configDir.getPath(), MODID + ".cfg"));
     }
 
     @Mod.EventHandler
