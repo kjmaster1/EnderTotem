@@ -21,7 +21,7 @@ public class EnderTotem
     public static final String VERSION = "1.0.2";
     public static final String CLIENT_PROXY = "com.kjmaster.endertotem.proxy.ClientProxy";
     public static final String COMMON_PROXY = "com.kjmaster.endertotem.proxy.CommonProxy";
-    public static final String DEPENDENCIES = "required-after:draconicevolution;required-after:codechickenlib";
+    public static final String DEPENDENCIES = "required-after:draconicevolution;required-after:codechickenlib;required-after:kjlib";
 
     private static File configDir;
     public static File getConfigDir() { return configDir; }

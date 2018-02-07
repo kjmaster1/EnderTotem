@@ -2,6 +2,7 @@ package com.kjmaster.endertotem.blocks;
 
 import com.kjmaster.endertotem.blocks.tile.TileEnderTotem;
 import com.kjmaster.endertotem.init.ModBlocks;
+import com.kjmaster.kjlib.common.blocks.BlockBase;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
