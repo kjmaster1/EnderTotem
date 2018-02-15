@@ -2,6 +2,7 @@ package com.kjmaster.endertotem.init;
 
 import com.kjmaster.endertotem.EnderTotem;
 import com.kjmaster.endertotem.blocks.EnderTotemBlock;
+import com.kjmaster.endertotem.blocks.tile.TileEnderTotem;
 import jline.internal.Preconditions;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -31,8 +32,8 @@ public class ModBlocks {
             CreativeTabs.MISC,
             50F,
             6000,
-            "pickaxe",
-            3);
+            true,
+            TileEnderTotem.class);
 
     @Mod.EventBusSubscriber
     public static class RegistrationHandler {

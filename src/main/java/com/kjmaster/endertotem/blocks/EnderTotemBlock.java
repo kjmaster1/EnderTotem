@@ -27,12 +27,12 @@ import java.util.Random;
 /**
  * Created by pbill_000 on 02/09/2017.
  */
-public class EnderTotemBlock extends BlockBase implements ITileEntityProvider {
+public class EnderTotemBlock extends BlockBase {
 
     public static final IProperty<Boolean> IS_HANDLES = PropertyBool.create("is_handles");
 
-    public EnderTotemBlock(String name, Material mat, CreativeTabs tab, float hardness, float resistance, String tool, int harvest) {
-        super(name, mat, tab, hardness, resistance, tool, harvest);
+    public EnderTotemBlock(String name, Material mat, CreativeTabs tab, float hardness, float resistance, boolean hasTile, Class<? extends TileEntity> tileClass) {
+        super(name, mat, tab, hardness, resistance, hasTile, tileClass);
         setDefaultState(blockState.getBaseState().withProperty(IS_HANDLES, true));
     }
 
@@ -54,18 +54,6 @@ public class EnderTotemBlock extends BlockBase implements ITileEntityProvider {
     @Override
     public int getMetaFromState(IBlockState state) {
         return 0;
-    }
-
-    @Nullable
-    @Override
-    public TileEntity createTileEntity(World world, IBlockState state) {
-        return new TileEnderTotem();
-    }
-
-    @Nullable
-    @Override
-    public TileEntity createNewTileEntity(World worldIn, int meta) {
-        return new TileEnderTotem();
     }
 
     @Override
