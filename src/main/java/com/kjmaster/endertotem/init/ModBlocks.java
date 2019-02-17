@@ -1,9 +1,9 @@
 package com.kjmaster.endertotem.init;
 
+import com.google.common.base.Preconditions;
 import com.kjmaster.endertotem.EnderTotem;
 import com.kjmaster.endertotem.blocks.EnderTotemBlock;
 import com.kjmaster.endertotem.blocks.tile.TileEnderTotem;
-import jline.internal.Preconditions;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -76,15 +76,7 @@ public class ModBlocks {
 
         };
         for(final Block block: blocks) {
-            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation( EnderTotem.MODID + ":" + block.getUnlocalizedName().substring(5), "inventory"));;
-        }
-        final ItemBlock[] items = {
-                new ItemBlock(enderTotemBlock),
-
-        };
-        for(final ItemBlock item : items) {
-            final Block block = item.getBlock();
-            ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(EnderTotem.MODID + ":" + block.getUnlocalizedName().substring(5), "inventory"));
+            ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(block), 0, new ModelResourceLocation(block.getRegistryName(), "inventory"));
         }
     }
 }
